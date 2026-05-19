@@ -7,7 +7,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'INFOBD_3D_VERSION', '1.0.4' );
+define( 'INFOBD_3D_VERSION', '1.0.5' );
 define( 'INFOBD_3D_DIR', get_template_directory() );
 define( 'INFOBD_3D_URI', get_template_directory_uri() );
 

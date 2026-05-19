@@ -30,6 +30,13 @@
         var menu = document.getElementById('primary-menu');
         var overlay = document.getElementById('menu-overlay');
 
+        // SAFETY: Force menu closed on page load (kills any cached state)
+        if (menu) {
+            menu.classList.remove('open');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            if (overlay) overlay.classList.remove('active');
+        }
+
         function openMenu() {
             if (!menu) return;
             menu.classList.add('open');

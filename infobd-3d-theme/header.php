@@ -11,6 +11,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a1a">
     <link rel="profile" href="https://gmpg.org/xfn/11">
+    <!-- CRITICAL INLINE CSS - Loaded BEFORE everything to prevent menu auto-open -->
+    <style id="infobd-critical-menu-fix">
+        @media (max-width: 768px) {
+            .nav-menu,
+            ul.nav-menu,
+            #primary-menu,
+            nav .nav-menu {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
+            .nav-menu.open,
+            ul.nav-menu.open,
+            #primary-menu.open,
+            .menu-toggle[aria-expanded="true"] ~ .nav-menu,
+            .menu-toggle[aria-expanded="true"] ~ #primary-menu {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                position: fixed !important;
+                top: 0 !important;
+                right: 0 !important;
+                width: 280px !important;
+                height: 100vh !important;
+                background: #1a1a35 !important;
+                flex-direction: column !important;
+                padding: 80px 20px 20px !important;
+                z-index: 99999 !important;
+                box-shadow: -10px 0 40px rgba(0,0,0,0.6) !important;
+                overflow-y: auto !important;
+                animation: infobdMenuSlide .35s ease-out !important;
+            }
+            @keyframes infobdMenuSlide {
+                from { transform: translateX(100%); }
+                to { transform: translateX(0); }
+            }
+            .menu-toggle {
+                display: inline-flex !important;
+            }
+        }
+        @media (min-width: 769px) {
+            .menu-toggle { display: none !important; }
+        }
+    </style>
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

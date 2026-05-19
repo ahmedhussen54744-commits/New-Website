@@ -11,78 +11,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0a0a1a">
     <link rel="profile" href="https://gmpg.org/xfn/11">
-    <!-- CRITICAL INLINE CSS - Loaded BEFORE everything to prevent menu auto-open -->
-    <style id="infobd-critical-menu-fix">
-        /* Close button - hidden by default */
-        #menu-close-btn {
-            display: none !important;
-            position: fixed !important;
-            top: 16px !important;
-            right: 16px !important;
-            width: 50px !important;
-            height: 50px !important;
-            background: linear-gradient(135deg, #ff2d55, #c70039) !important;
-            color: #fff !important;
-            border: none !important;
-            border-radius: 50% !important;
-            font-size: 32px !important;
-            line-height: 1 !important;
-            cursor: pointer !important;
-            z-index: 999999 !important;
-            box-shadow: 0 4px 20px rgba(255,45,85,0.6) !important;
-            font-weight: bold !important;
-            padding: 0 !important;
-            align-items: center !important;
-            justify-content: center !important;
-            font-family: Arial, sans-serif !important;
+    <!-- INLINE CSS - New simple dropdown menu style (cannot be cached) -->
+    <style id="infobd-menu-styles">
+        /* Hamburger toggle button - mobile only */
+        .menu-toggle {
+            display: none;
+            background: linear-gradient(135deg, #ff2d55, #c70039);
+            color: #fff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(255,45,85,0.4);
+            transition: transform .25s ease;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
         }
-        #menu-close-btn.show {
-            display: flex !important;
+        .menu-toggle:active { transform: scale(0.92); }
+        .menu-toggle[aria-expanded="true"] {
+            background: linear-gradient(135deg, #c70039, #900c3f);
         }
+
+        /* Hide overlay on desktop */
+        .menu-overlay { display: none; }
+
+        /* ===== MOBILE STYLES (max 768px) ===== */
         @media (max-width: 768px) {
-            .nav-menu,
-            ul.nav-menu,
-            #primary-menu,
-            nav .nav-menu {
-                display: none !important;
-                visibility: hidden !important;
-                opacity: 0 !important;
-                pointer-events: none !important;
-            }
-            .nav-menu.open,
-            ul.nav-menu.open,
-            #primary-menu.open,
-            .menu-toggle[aria-expanded="true"] ~ .nav-menu,
-            .menu-toggle[aria-expanded="true"] ~ #primary-menu {
-                display: flex !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                pointer-events: auto !important;
-                position: fixed !important;
-                top: 0 !important;
-                right: 0 !important;
-                width: 280px !important;
-                height: 100vh !important;
-                background: #1a1a35 !important;
-                flex-direction: column !important;
-                padding: 80px 20px 20px !important;
-                z-index: 99999 !important;
-                box-shadow: -10px 0 40px rgba(0,0,0,0.6) !important;
-                overflow-y: auto !important;
-                animation: infobdMenuSlide .35s ease-out !important;
-            }
-            @keyframes infobdMenuSlide {
-                from { transform: translateX(100%); }
-                to { transform: translateX(0); }
-            }
             .menu-toggle {
                 display: inline-flex !important;
             }
+
+            /* Mobile menu - DROPDOWN below header (NOT fullscreen panel) */
+            #primary-menu,
+            ul.nav-menu,
+            .nav-menu {
+                display: none !important;
+                position: absolute !important;
+                top: calc(100% + 8px) !important;
+                right: 12px !important;
+                left: 12px !important;
+                width: auto !important;
+                max-width: none !important;
+                height: auto !important;
+                max-height: 70vh !important;
+                background: linear-gradient(180deg, #1a1a35, #131329) !important;
+                flex-direction: column !important;
+                gap: 4px !important;
+                padding: 12px !important;
+                border-radius: 16px !important;
+                border: 1px solid rgba(255,45,85,0.3) !important;
+                box-shadow:
+                    0 20px 60px rgba(0,0,0,0.6),
+                    0 0 0 1px rgba(255,255,255,0.05) inset,
+                    0 0 30px rgba(255,45,85,0.2) !important;
+                z-index: 9999 !important;
+                overflow-y: auto !important;
+                overflow-x: hidden !important;
+                list-style: none !important;
+                margin: 0 !important;
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(-20px) scale(0.95);
+                transform-origin: top center;
+                transition: opacity .25s ease, transform .3s cubic-bezier(.2,.9,.3,1.4), visibility 0s .3s;
+            }
+
+            #primary-menu.open,
+            ul.nav-menu.open,
+            .nav-menu.open {
+                display: flex !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                transform: translateY(0) scale(1) !important;
+                transition: opacity .25s ease, transform .3s cubic-bezier(.2,.9,.3,1.4), visibility 0s 0s !important;
+            }
+
+            /* Menu items */
+            .nav-menu li {
+                width: 100%;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+            .nav-menu li:last-child { border-bottom: none; }
+
+            .nav-menu li a {
+                display: flex !important;
+                align-items: center;
+                width: 100%;
+                padding: 14px 16px !important;
+                color: #f0f0ff !important;
+                font-weight: 600 !important;
+                font-size: 16px !important;
+                text-decoration: none !important;
+                border-radius: 10px;
+                background: transparent !important;
+                transition: all .2s ease;
+                transform: none !important;
+            }
+            .nav-menu li a::before {
+                content: '\203A';
+                margin-right: 12px;
+                color: #ff2d55;
+                font-size: 22px;
+                font-weight: bold;
+                background: none !important;
+                position: static !important;
+                opacity: 1 !important;
+                transform: none !important;
+                box-shadow: none !important;
+                inset: auto !important;
+                border-radius: 0 !important;
+                z-index: auto !important;
+            }
+            .nav-menu li a:active {
+                background: linear-gradient(135deg, #ff2d55, #c70039) !important;
+                color: #fff !important;
+            }
+            .nav-menu li.current-menu-item > a,
+            .nav-menu li.current_page_item > a {
+                background: linear-gradient(135deg, #ff2d55, #c70039) !important;
+                color: #fff !important;
+                box-shadow: 0 4px 12px rgba(255,45,85,0.3);
+            }
+            .nav-menu li.current-menu-item > a::before,
+            .nav-menu li.current_page_item > a::before {
+                color: #fff !important;
+            }
+
+            /* Submenu items */
+            .nav-menu .sub-menu {
+                position: static !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                background: rgba(0,0,0,0.2) !important;
+                border: none !important;
+                border-radius: 8px !important;
+                margin: 4px 0 4px 20px !important;
+                padding: 4px !important;
+                box-shadow: none !important;
+            }
+            .nav-menu .sub-menu li a {
+                font-size: 14px !important;
+                padding: 10px 14px !important;
+            }
+
+            /* Light backdrop overlay (click to close) */
+            .menu-overlay {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.35);
+                z-index: 9998;
+                cursor: pointer;
+                animation: infobdFadeIn .25s ease;
+            }
+            .menu-overlay.active { display: block; }
+            @keyframes infobdFadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
         }
+
         @media (min-width: 769px) {
             .menu-toggle { display: none !important; }
-            #menu-close-btn { display: none !important; }
         }
+
+        /* Make header position relative for dropdown */
+        .main-navigation { position: relative; }
     </style>
     <?php wp_head(); ?>
 </head>
@@ -141,8 +242,6 @@
 
         <nav class="main-navigation" aria-label="<?php esc_attr_e( 'Primary', 'infobd-3d' ); ?>">
             <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" type="button">&#9776;</button>
-            <div class="menu-overlay" id="menu-overlay"></div>
-            <button class="menu-close-btn" id="menu-close-btn" type="button" aria-label="<?php esc_attr_e( 'Close menu', 'infobd-3d' ); ?>">&times;</button>
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'primary',
@@ -152,6 +251,7 @@
                 'fallback_cb'    => 'infobd_3d_fallback_menu',
             ) );
             ?>
+            <div class="menu-overlay" id="menu-overlay"></div>
         </nav>
 
         <div class="header-search">
@@ -174,35 +274,29 @@
 
 <main id="main-content" class="site-main">
 
-<!-- INLINE MENU CONTROL SCRIPT - Cannot be cached -->
+<!-- INLINE MENU JS - Cannot be cached, ensures menu always works -->
 <script>
 (function(){
     function initMenu(){
         var toggle = document.querySelector('.menu-toggle');
         var menu = document.getElementById('primary-menu');
         var overlay = document.getElementById('menu-overlay');
-        var closeBtn = document.getElementById('menu-close-btn');
         if (!toggle || !menu) return;
 
-        // Force closed on load
+        // Force closed on every page load
         menu.classList.remove('open');
         toggle.setAttribute('aria-expanded', 'false');
         if (overlay) overlay.classList.remove('active');
-        if (closeBtn) closeBtn.classList.remove('show');
 
         function openM(){
             menu.classList.add('open');
             toggle.setAttribute('aria-expanded', 'true');
             if (overlay) overlay.classList.add('active');
-            if (closeBtn) closeBtn.classList.add('show');
-            document.body.style.overflow = 'hidden';
         }
         function closeM(){
             menu.classList.remove('open');
             toggle.setAttribute('aria-expanded', 'false');
             if (overlay) overlay.classList.remove('active');
-            if (closeBtn) closeBtn.classList.remove('show');
-            document.body.style.overflow = '';
         }
 
         toggle.addEventListener('click', function(e){
@@ -211,46 +305,38 @@
             if (menu.classList.contains('open')) closeM(); else openM();
         });
 
-        if (closeBtn){
-            closeBtn.addEventListener('click', function(e){
-                e.preventDefault();
-                e.stopPropagation();
-                closeM();
-            });
-            // Touch events for mobile
-            closeBtn.addEventListener('touchend', function(e){
-                e.preventDefault();
-                e.stopPropagation();
-                closeM();
-            });
-        }
-
         if (overlay){
-            overlay.addEventListener('click', closeM);
-            overlay.addEventListener('touchend', function(e){
+            overlay.addEventListener('click', function(e){
                 e.preventDefault();
                 closeM();
             });
         }
 
-        // Close when clicking any menu link
-        var links = menu.getElementsByTagName('a');
-        for (var i = 0; i < links.length; i++){
-            links[i].addEventListener('click', function(){
-                setTimeout(closeM, 150);
-            });
-        }
+        // Click outside menu closes it
+        document.addEventListener('click', function(e){
+            if (!menu.classList.contains('open')) return;
+            if (menu.contains(e.target) || toggle.contains(e.target)) return;
+            closeM();
+        });
 
-        // ESC key
+        // ESC key closes menu
         document.addEventListener('keydown', function(e){
-            if (e.key === 'Escape' || e.keyCode === 27){
-                if (menu.classList.contains('open')) closeM();
+            if ((e.key === 'Escape' || e.keyCode === 27) && menu.classList.contains('open')){
+                closeM();
             }
         });
 
-        // Expose globally for debugging
-        window.infobdCloseMenu = closeM;
-        window.infobdOpenMenu = openM;
+        // Click on any menu link closes menu
+        var links = menu.getElementsByTagName('a');
+        for (var i = 0; i < links.length; i++){
+            (function(link){
+                link.addEventListener('click', function(){
+                    setTimeout(closeM, 100);
+                });
+            })(links[i]);
+        }
+
+        window.infobdMenu = { open: openM, close: closeM };
     }
 
     if (document.readyState === 'loading'){

@@ -4,7 +4,7 @@ Theme URI: https://infobd.online/
 Author: Infobd.online
 Author URI: https://infobd.online/
 Description: A premium 3D news portal theme with gaming, eCommerce, and news features. Highly secure, fully responsive, mobile + desktop ready. Includes 3D effects, animated cards, parallax hero, copyright protection hooks, and 80+ admin features (with the companion Infobd Mega Plugin).
-Version: 1.0.0
+Version: 1.0.4
 Requires at least: 5.5
 Tested up to: 6.5
 Requires PHP: 7.2
@@ -1084,7 +1084,9 @@ img { max-width: 100%; height: auto; display: block; }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-side { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
     .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
-    .nav-menu {
+    .nav-menu,
+    ul.nav-menu,
+    #primary-menu {
         display: none !important;
         position: fixed;
         top: 0; right: 0;
@@ -1097,14 +1099,14 @@ img { max-width: 100%; height: auto; display: block; }
         align-items: stretch;
         z-index: 200;
         overflow-y: auto;
-        transform: translateX(0);
-        visibility: hidden;
-        opacity: 0;
+        list-style: none;
     }
-    .nav-menu.open {
+    .nav-menu.open,
+    ul.nav-menu.open,
+    #primary-menu.open {
         display: flex !important;
-        visibility: visible;
-        opacity: 1;
+        visibility: visible !important;
+        opacity: 1 !important;
         animation: slideMenuIn .35s cubic-bezier(.2,.9,.3,1.4) forwards;
     }
     @keyframes slideMenuIn {

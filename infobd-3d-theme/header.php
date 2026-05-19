@@ -13,6 +13,32 @@
     <link rel="profile" href="https://gmpg.org/xfn/11">
     <!-- CRITICAL INLINE CSS - Loaded BEFORE everything to prevent menu auto-open -->
     <style id="infobd-critical-menu-fix">
+        /* Close button - hidden by default */
+        #menu-close-btn {
+            display: none !important;
+            position: fixed !important;
+            top: 16px !important;
+            right: 16px !important;
+            width: 50px !important;
+            height: 50px !important;
+            background: linear-gradient(135deg, #ff2d55, #c70039) !important;
+            color: #fff !important;
+            border: none !important;
+            border-radius: 50% !important;
+            font-size: 32px !important;
+            line-height: 1 !important;
+            cursor: pointer !important;
+            z-index: 999999 !important;
+            box-shadow: 0 4px 20px rgba(255,45,85,0.6) !important;
+            font-weight: bold !important;
+            padding: 0 !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-family: Arial, sans-serif !important;
+        }
+        #menu-close-btn.show {
+            display: flex !important;
+        }
         @media (max-width: 768px) {
             .nav-menu,
             ul.nav-menu,
@@ -55,6 +81,7 @@
         }
         @media (min-width: 769px) {
             .menu-toggle { display: none !important; }
+            #menu-close-btn { display: none !important; }
         }
     </style>
     <?php wp_head(); ?>
@@ -113,8 +140,9 @@
         </div>
 
         <nav class="main-navigation" aria-label="<?php esc_attr_e( 'Primary', 'infobd-3d' ); ?>">
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">&#9776;</button>
+            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false" type="button">&#9776;</button>
             <div class="menu-overlay" id="menu-overlay"></div>
+            <button class="menu-close-btn" id="menu-close-btn" type="button" aria-label="<?php esc_attr_e( 'Close menu', 'infobd-3d' ); ?>">&times;</button>
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'primary',
@@ -145,3 +173,90 @@
 <?php endif; ?>
 
 <main id="main-content" class="site-main">
+
+<!-- INLINE MENU CONTROL SCRIPT - Cannot be cached -->
+<script>
+(function(){
+    function initMenu(){
+        var toggle = document.querySelector('.menu-toggle');
+        var menu = document.getElementById('primary-menu');
+        var overlay = document.getElementById('menu-overlay');
+        var closeBtn = document.getElementById('menu-close-btn');
+        if (!toggle || !menu) return;
+
+        // Force closed on load
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        if (overlay) overlay.classList.remove('active');
+        if (closeBtn) closeBtn.classList.remove('show');
+
+        function openM(){
+            menu.classList.add('open');
+            toggle.setAttribute('aria-expanded', 'true');
+            if (overlay) overlay.classList.add('active');
+            if (closeBtn) closeBtn.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeM(){
+            menu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            if (overlay) overlay.classList.remove('active');
+            if (closeBtn) closeBtn.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+
+        toggle.addEventListener('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            if (menu.classList.contains('open')) closeM(); else openM();
+        });
+
+        if (closeBtn){
+            closeBtn.addEventListener('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                closeM();
+            });
+            // Touch events for mobile
+            closeBtn.addEventListener('touchend', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                closeM();
+            });
+        }
+
+        if (overlay){
+            overlay.addEventListener('click', closeM);
+            overlay.addEventListener('touchend', function(e){
+                e.preventDefault();
+                closeM();
+            });
+        }
+
+        // Close when clicking any menu link
+        var links = menu.getElementsByTagName('a');
+        for (var i = 0; i < links.length; i++){
+            links[i].addEventListener('click', function(){
+                setTimeout(closeM, 150);
+            });
+        }
+
+        // ESC key
+        document.addEventListener('keydown', function(e){
+            if (e.key === 'Escape' || e.keyCode === 27){
+                if (menu.classList.contains('open')) closeM();
+            }
+        });
+
+        // Expose globally for debugging
+        window.infobdCloseMenu = closeM;
+        window.infobdOpenMenu = openM;
+    }
+
+    if (document.readyState === 'loading'){
+        document.addEventListener('DOMContentLoaded', initMenu);
+    } else {
+        initMenu();
+    }
+})();
+</script>

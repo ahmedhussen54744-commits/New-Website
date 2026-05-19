@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+   Sample WordPress WXR file for Infobd Mega Plugin demo content.
+   Import via: WordPress Admin → Tools → Import → WordPress.
+-->
+<rss version="2.0"
+    xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:wp="http://wordpress.org/export/1.2/">
+<channel>
+    <title>Infobd.online Demo</title>
+    <link>https://infobd.online</link>
+    <description>Demo content for Infobd Mega plugin</description>
+    <language>en-US</language>
+    <wp:wxr_version>1.2</wp:wxr_version>
+    <wp:base_site_url>https://infobd.online</wp:base_site_url>
+    <wp:base_blog_url>https://infobd.online</wp:base_blog_url>
+
+    <wp:category>
+        <wp:term_id>2</wp:term_id>
+        <wp:category_nicename>news</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[News]]></wp:cat_name>
+    </wp:category>
+    <wp:category>
+        <wp:term_id>3</wp:term_id>
+        <wp:category_nicename>gaming</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[Gaming]]></wp:cat_name>
+    </wp:category>
+    <wp:category>
+        <wp:term_id>4</wp:term_id>
+        <wp:category_nicename>tech</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[Tech]]></wp:cat_name>
+    </wp:category>
+    <wp:category>
+        <wp:term_id>5</wp:term_id>
+        <wp:category_nicename>shop</wp:category_nicename>
+        <wp:category_parent></wp:category_parent>
+        <wp:cat_name><![CDATA[Shop]]></wp:cat_name>
+    </wp:category>
+
+    <item>
+        <title>Welcome to Infobd.online — A Premium 3D News Portal</title>
+        <link>https://infobd.online/welcome/</link>
+        <pubDate>Mon, 19 May 2026 10:00:00 +0600</pubDate>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <guid isPermaLink="false">https://infobd.online/?p=1</guid>
+        <description></description>
+        <content:encoded><![CDATA[
+<p>Welcome to <strong>Infobd.online</strong> — a beautifully crafted 3D news portal that mixes news, gaming, and shopping into a single experience.</p>
+<h2>What makes Infobd different?</h2>
+<p>Every interaction has subtle 3D depth, every card hovers and tilts, and every feature is built with security and performance in mind.</p>
+<h3>Built-in features</h3>
+<ul>
+<li>Breaking news ticker</li>
+<li>Trending posts widget</li>
+<li>Gaming zone with review scores</li>
+<li>Lightweight shop with wishlist</li>
+<li>Highly secure, copyright protected</li>
+</ul>
+<p>Explore the categories above and dive in!</p>
+        ]]></content:encoded>
+        <excerpt:encoded><![CDATA[Welcome to Infobd.online — your premium 3D news, gaming, and shop destination.]]></excerpt:encoded>
+        <wp:post_id>1</wp:post_id>
+        <wp:status>publish</wp:status>
+        <wp:post_type>post</wp:post_type>
+        <category domain="category" nicename="news"><![CDATA[News]]></category>
+    </item>
+
+    <item>
+        <title>Top 10 Games to Watch in 2026</title>
+        <link>https://infobd.online/top-10-games-2026/</link>
+        <pubDate>Mon, 19 May 2026 09:00:00 +0600</pubDate>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <guid isPermaLink="false">https://infobd.online/?p=2</guid>
+        <content:encoded><![CDATA[
+<p>2026 is shaping up to be a massive year for gaming. Here are the top releases to keep on your radar.</p>
+<h2>1. Galaxy Saga IV</h2>
+<p>An open-world space adventure with photorealistic 3D environments...</p>
+<h2>2. Drift Champions</h2>
+<p>Asphalt eating racing reborn for next-gen consoles...</p>
+        ]]></content:encoded>
+        <wp:post_id>2</wp:post_id>
+        <wp:status>publish</wp:status>
+        <wp:post_type>post</wp:post_type>
+        <category domain="category" nicename="gaming"><![CDATA[Gaming]]></category>
+    </item>
+
+    <item>
+        <title>Best Smartphones to Buy This Month</title>
+        <link>https://infobd.online/best-smartphones/</link>
+        <pubDate>Mon, 19 May 2026 08:00:00 +0600</pubDate>
+        <dc:creator><![CDATA[admin]]></dc:creator>
+        <guid isPermaLink="false">https://infobd.online/?p=3</guid>
+        <content:encoded><![CDATA[
+<p>Looking for a phone upgrade? We rounded up the very best smartphones available right now.</p>
+<h2>Flagship picks</h2>
+<p>If you want top-tier cameras and snappy 3D performance, these are our recommendations.</p>
+        ]]></content:encoded>
+        <wp:post_id>3</wp:post_id>
+        <wp:status>publish</wp:status>
+        <wp:post_type>post</wp:post_type>
+        <category domain="category" nicename="tech"><![CDATA[Tech]]></category>
+    </item>
+
+</channel>
+</rss>

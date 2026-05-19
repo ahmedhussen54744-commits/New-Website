@@ -1,0 +1,206 @@
+# Copyright (C) 2026 Infobd.online
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Infobd Mega 1.0.0\n"
+"Report-Msgid-Bugs-To: https://infobd.online/\n"
+"POT-Creation-Date: 2026-05-19 12:00+0600\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "Settings"
+msgstr ""
+
+msgid "This content is copyright protected."
+msgstr ""
+
+msgid "Link copied!"
+msgstr ""
+
+msgid "Liked!"
+msgstr ""
+
+msgid "Security"
+msgstr ""
+
+msgid "Copyright Protection"
+msgstr ""
+
+msgid "News Portal"
+msgstr ""
+
+msgid "Gaming Zone"
+msgstr ""
+
+msgid "eCommerce / Shop"
+msgstr ""
+
+msgid "Public Features"
+msgstr ""
+
+msgid "SEO"
+msgstr ""
+
+msgid "Performance"
+msgstr ""
+
+msgid "Ads & Monetization"
+msgstr ""
+
+msgid "Disable XML-RPC"
+msgstr ""
+
+msgid "Prevent brute-force via xmlrpc.php"
+msgstr ""
+
+msgid "Require login for REST API"
+msgstr ""
+
+msgid "Hide WordPress version"
+msgstr ""
+
+msgid "Block user enumeration"
+msgstr ""
+
+msgid "Limit login attempts"
+msgstr ""
+
+msgid "Max login attempts"
+msgstr ""
+
+msgid "Lockout duration (minutes)"
+msgstr ""
+
+msgid "Disable theme/plugin file editor"
+msgstr ""
+
+msgid "Force strong passwords"
+msgstr ""
+
+msgid "Block bad bots"
+msgstr ""
+
+msgid "Send security headers (X-Frame-Options, HSTS, etc.)"
+msgstr ""
+
+msgid "Hide login error details"
+msgstr ""
+
+msgid "Disable directory listing"
+msgstr ""
+
+msgid "Block PHP execution inside uploads"
+msgstr ""
+
+msgid "Change login URL (custom slug)"
+msgstr ""
+
+msgid "Custom login slug"
+msgstr ""
+
+msgid "Disable right-click"
+msgstr ""
+
+msgid "Disable text selection"
+msgstr ""
+
+msgid "Disable copy"
+msgstr ""
+
+msgid "Disable image drag"
+msgstr ""
+
+msgid "Block DevTools shortcuts (F12, Ctrl+Shift+I/J/C)"
+msgstr ""
+
+msgid "Block Print / Screenshot shortcut"
+msgstr ""
+
+msgid "Block View Source / Save (Ctrl+U / Ctrl+S)"
+msgstr ""
+
+msgid "Copyright warning message"
+msgstr ""
+
+msgid "Auto-watermark uploaded images (server support required)"
+msgstr ""
+
+msgid "Append source URL when copying long text"
+msgstr ""
+
+msgid "Save Settings"
+msgstr ""
+
+msgid "Dashboard"
+msgstr ""
+
+msgid "Features Active"
+msgstr ""
+
+msgid "Posts"
+msgstr ""
+
+msgid "Pages"
+msgstr ""
+
+msgid "Games"
+msgstr ""
+
+msgid "Products"
+msgstr ""
+
+msgid "Comments"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Quick Actions"
+msgstr ""
+
+msgid "New Post"
+msgstr ""
+
+msgid "New Game"
+msgstr ""
+
+msgid "New Product"
+msgstr ""
+
+msgid "Customize Theme"
+msgstr ""
+
+msgid "Edit Menus"
+msgstr ""
+
+msgid "Manage Widgets"
+msgstr ""
+
+msgid "Useful Shortcodes"
+msgstr ""
+
+msgid "Trending posts"
+msgstr ""
+
+msgid "Latest posts"
+msgstr ""
+
+msgid "Product grid"
+msgstr ""
+
+msgid "Games grid"
+msgstr ""
+
+msgid "All categories"
+msgstr ""
+
+msgid "Breadcrumb nav"
+msgstr ""
+
+msgid "Newsletter form"
+msgstr ""
+
+msgid "Social links row"
+msgstr ""

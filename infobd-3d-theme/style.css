@@ -176,6 +176,11 @@ img { max-width: 100%; height: auto; display: block; }
     display: flex;
     gap: 4px;
     align-items: center;
+    /* Ensure not visible as panel on desktop */
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    position: static;
 }
 .nav-menu li { position: relative; }
 .nav-menu a {
@@ -1081,19 +1086,28 @@ img { max-width: 100%; height: auto; display: block; }
     .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
     .nav-menu {
         position: fixed;
-        top: 0; right: -100%;
+        top: 0; right: 0;
         width: 280px; height: 100vh;
         background: var(--bg-elevated);
         flex-direction: column;
         gap: 4px;
         padding: 80px 20px 20px;
-        transition: right .4s cubic-bezier(.2,.9,.3,1.4);
         box-shadow: -10px 0 40px rgba(0,0,0,0.6);
         align-items: stretch;
         z-index: 200;
         overflow-y: auto;
+        /* HIDDEN by default - no transition on initial load */
+        transform: translateX(110%);
+        visibility: hidden;
+        opacity: 0;
+        transition: transform .4s cubic-bezier(.2,.9,.3,1.4), visibility 0s .4s, opacity .3s;
     }
-    .nav-menu.open { right: 0; }
+    .nav-menu.open {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+        transition: transform .4s cubic-bezier(.2,.9,.3,1.4), visibility 0s 0s, opacity .3s;
+    }
     /* Close button inside mobile menu */
     .nav-menu.open::before {
         content: '\2715';

@@ -1,0 +1,173 @@
+# Copyright (C) 2026 Infobd.online
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Infobd 3D 1.0.0\n"
+"Report-Msgid-Bugs-To: https://infobd.online/\n"
+"POT-Creation-Date: 2026-05-19 12:00+0600\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "Primary Menu"
+msgstr ""
+
+msgid "Footer Menu"
+msgstr ""
+
+msgid "Mobile Menu"
+msgstr ""
+
+msgid "Primary Sidebar"
+msgstr ""
+
+msgid "Main sidebar shown on posts and archives."
+msgstr ""
+
+msgid "Footer Column %d"
+msgstr ""
+
+msgid "%d min read"
+msgid_plural "%d min read"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Skip to content"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Search news, posts, products..."
+msgstr ""
+
+msgid "Breaking"
+msgstr ""
+
+msgid "Browse Categories"
+msgstr ""
+
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Latest Posts"
+msgstr ""
+
+msgid "Results for: %s"
+msgstr ""
+
+msgid "Posts by %s"
+msgstr ""
+
+msgid "Nothing found"
+msgstr ""
+
+msgid "Try a different search or check back later."
+msgstr ""
+
+msgid "Popular Posts"
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+msgid "Tags"
+msgstr ""
+
+msgid "Read"
+msgstr ""
+
+msgid "Pages:"
+msgstr ""
+
+msgid "views"
+msgstr ""
+
+msgid "Tags:"
+msgstr ""
+
+msgid "Share:"
+msgstr ""
+
+msgid "Copy Link"
+msgstr ""
+
+msgid "You may also like"
+msgstr ""
+
+msgid "%s Comment"
+msgid_plural "%s Comments"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Comments are closed."
+msgstr ""
+
+msgid "Leave a comment"
+msgstr ""
+
+msgid "Your email"
+msgstr ""
+
+msgid "Subscribe"
+msgstr ""
+
+msgid "Quick Links"
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "Contact"
+msgstr ""
+
+msgid "Privacy"
+msgstr ""
+
+msgid "Terms"
+msgstr ""
+
+msgid "All rights reserved."
+msgstr ""
+
+msgid "Content protected by copyright law."
+msgstr ""
+
+msgid "Back to top"
+msgstr ""
+
+msgid "Page not found"
+msgstr ""
+
+msgid "The page you are looking for might have been moved, renamed, or temporarily unavailable."
+msgstr ""
+
+msgid "Back to Home"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Link Copied!"
+msgstr ""
+
+msgid "Menu"
+msgstr ""
+
+msgid "Infobd.online — Your premium 3D news, gaming, and shopping destination. Stay informed, entertained, and inspired every day."
+msgstr ""
+
+msgid "Infobd Branding"
+msgstr ""
+
+msgid "About text (footer)"
+msgstr ""
+
+msgid "Social Links"
+msgstr ""
+
+msgid "Primary color"
+msgstr ""

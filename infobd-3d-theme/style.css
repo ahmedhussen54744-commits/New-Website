@@ -1085,6 +1085,7 @@ img { max-width: 100%; height: auto; display: block; }
     .hero-side { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
     .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
     .nav-menu {
+        display: none !important;
         position: fixed;
         top: 0; right: 0;
         width: 280px; height: 100vh;
@@ -1096,17 +1097,19 @@ img { max-width: 100%; height: auto; display: block; }
         align-items: stretch;
         z-index: 200;
         overflow-y: auto;
-        /* HIDDEN by default - no transition on initial load */
-        transform: translateX(110%);
+        transform: translateX(0);
         visibility: hidden;
         opacity: 0;
-        transition: transform .4s cubic-bezier(.2,.9,.3,1.4), visibility 0s .4s, opacity .3s;
     }
     .nav-menu.open {
-        transform: translateX(0);
+        display: flex !important;
         visibility: visible;
         opacity: 1;
-        transition: transform .4s cubic-bezier(.2,.9,.3,1.4), visibility 0s 0s, opacity .3s;
+        animation: slideMenuIn .35s cubic-bezier(.2,.9,.3,1.4) forwards;
+    }
+    @keyframes slideMenuIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
     /* Close button inside mobile menu */
     .nav-menu.open::before {

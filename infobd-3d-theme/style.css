@@ -1078,7 +1078,7 @@ img { max-width: 100%; height: auto; display: block; }
 @media (max-width: 768px) {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-side { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
-    .menu-toggle { display: inline-block; }
+    .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
     .nav-menu {
         position: fixed;
         top: 0; right: -100%;
@@ -1094,6 +1094,38 @@ img { max-width: 100%; height: auto; display: block; }
         overflow-y: auto;
     }
     .nav-menu.open { right: 0; }
+    /* Close button inside mobile menu */
+    .nav-menu.open::before {
+        content: '\2715';
+        position: absolute;
+        top: 20px; right: 20px;
+        width: 40px; height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient-1);
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(255,45,85,0.5);
+        z-index: 201;
+        pointer-events: auto;
+    }
+    /* Overlay behind mobile menu */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.65);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 199;
+        cursor: pointer;
+    }
+    .menu-overlay.active { display: block; animation: fadeIn .3s ease; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     .nav-menu .sub-menu {
         position: static;
         opacity: 1; visibility: visible;
@@ -1101,6 +1133,13 @@ img { max-width: 100%; height: auto; display: block; }
         background: rgba(0,0,0,0.3);
         margin-top: 6px;
         border: none;
+    }
+    /* Active menu item highlight */
+    .nav-menu > li.current-menu-item > a,
+    .nav-menu > li.current_page_item > a {
+        background: var(--gradient-1);
+        color: #fff;
+        border-radius: 10px;
     }
     .single-post-title { font-size: 26px; }
     .single-post-content { padding: 24px 18px; font-size: 15px; }

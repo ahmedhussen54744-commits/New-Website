@@ -68,6 +68,7 @@
 
         <nav class="main-navigation" aria-label="<?php esc_attr_e( 'Primary', 'infobd-3d' ); ?>">
             <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">&#9776;</button>
+            <div class="menu-overlay" id="menu-overlay"></div>
             <?php
             wp_nav_menu( array(
                 'theme_location' => 'primary',

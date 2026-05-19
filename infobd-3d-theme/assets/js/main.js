@@ -28,18 +28,65 @@
         /* ---------- Mobile menu toggle ---------- */
         var toggle = document.querySelector('.menu-toggle');
         var menu = document.getElementById('primary-menu');
+        var overlay = document.getElementById('menu-overlay');
+
+        function openMenu() {
+            if (!menu) return;
+            menu.classList.add('open');
+            if (overlay) overlay.classList.add('active');
+            if (toggle) toggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            if (!menu) return;
+            menu.classList.remove('open');
+            if (overlay) overlay.classList.remove('active');
+            if (toggle) toggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
         if (toggle && menu) {
-            toggle.addEventListener('click', function () {
-                var open = menu.classList.toggle('open');
-                toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            toggle.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (menu.classList.contains('open')) closeMenu();
+                else openMenu();
             });
-            // Close on outside click
+
+            // Close on overlay click
+            if (overlay) {
+                overlay.addEventListener('click', function () { closeMenu(); });
+            }
+
+            // Close on outside click (desktop fallback)
             document.addEventListener('click', function (e) {
                 if (!menu.contains(e.target) && !toggle.contains(e.target) && menu.classList.contains('open')) {
-                    menu.classList.remove('open');
-                    toggle.setAttribute('aria-expanded', 'false');
+                    closeMenu();
                 }
             });
+
+            // Close button (::before pseudo) — use click on top-right area of menu
+            menu.addEventListener('click', function (e) {
+                var rect = menu.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                // Click is in top-right corner area (close button zone: top 60px, right 60px)
+                if (y < 60 && x > (rect.width - 60)) {
+                    closeMenu();
+                }
+            });
+
+            // Close menu when any menu link is clicked (for same-page navigation)
+            menu.querySelectorAll('a').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    // Allow submenu parents to expand instead of closing
+                    var li = a.parentElement;
+                    if (li.classList.contains('menu-item-has-children') || li.classList.contains('page_item_has_children')) {
+                        return; // handled below
+                    }
+                    setTimeout(closeMenu, 100);
+                });
+            });
+
             // Submenu touch handling
             var parents = menu.querySelectorAll('li.menu-item-has-children > a, li.page_item_has_children > a');
             parents.forEach(function (a) {
@@ -57,6 +104,13 @@
                         }
                     }
                 });
+            });
+
+            // Close menu on ESC key
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && menu.classList.contains('open')) {
+                    closeMenu();
+                }
             });
         }
 
